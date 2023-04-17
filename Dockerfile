@@ -8,6 +8,7 @@ RUN apk add --update --no-cache  \
       bash \
       unzip \
       curl \
+      wget \
       npm \
       nodejs-npm \
       openjdk8-jre \
