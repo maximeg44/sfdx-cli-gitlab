@@ -10,7 +10,6 @@ RUN apk add --update --no-cache  \
       curl \
       wget \
       npm \
-      nodejs-npm \
       openjdk8-jre \
       openssh-client \
       perl \
