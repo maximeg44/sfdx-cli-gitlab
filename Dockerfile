@@ -9,6 +9,7 @@ RUN apk add --update --no-cache  \
       unzip \
       curl \
       wget \
+      nodejs \
       npm \
       openjdk8-jre \
       openssh-client \
