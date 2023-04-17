@@ -23,5 +23,6 @@ RUN apk add --update --no-cache  \
 RUN npm install sfdx-cli@7.196.6 --global \
     && sfdx --version \
     && echo y | sfdx plugins:install sfdx-git-delta \
+    && echo y | sfdx plugins:install sfdx-hardis \
     && npm install sfdx-git-delta@latest --global \
     && sfdx plugins
