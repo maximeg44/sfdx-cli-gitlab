@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: maximehardis/sfdx-cli-gitlab:7.196.6
+          tags: maximehardis/sfdx-cli-gitlab:7.198.6
