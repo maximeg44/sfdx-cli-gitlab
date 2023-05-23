@@ -20,9 +20,8 @@ RUN apk add --update --no-cache  \
 # RUN npm install sfdx-cli@latest-rc --global
 # install SFDX-Git-Delta plugin - https://github.com/scolladon/sfdx-git-delta
 # install SFDX-Hardis - https://github.com/hardisgroupcom/sfdx-hardis
-RUN npm install sfdx-cli@7.198.6 --global \
+RUN npm install sfdx-cli@7.201.6 --global \
     && sfdx --version \
     && echo y | sfdx plugins:install sfdx-git-delta \
-    && echo y | sfdx plugins:install sfdx-hardis \
     && npm install sfdx-git-delta@latest --global \
     && sfdx plugins
