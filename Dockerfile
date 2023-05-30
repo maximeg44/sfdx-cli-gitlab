@@ -22,7 +22,6 @@ RUN apk add --update --no-cache \
 RUN npm install --no-cache sfdx-cli@7.201.6 --global \
     && sfdx --version \
     && echo y | sfdx plugins:install sfdx-git-delta \
-    && npm install sfdx-git-delta@latest --global \
     && sfdx plugins
 
 RUN npm install --no-cache fs xml2js glob axios sfdx-git-delta@latest --global
