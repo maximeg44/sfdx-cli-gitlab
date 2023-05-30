@@ -24,4 +24,4 @@ RUN npm install sfdx-cli@7.201.6 --global \
     && echo y | sfdx plugins:install sfdx-git-delta \
     && npm install sfdx-git-delta@latest --global \
     && sfdx plugins \
-    && echo y | npm install fs xml2js glob axios
+    && npm install fs xml2js glob axios
