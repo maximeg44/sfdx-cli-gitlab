@@ -26,6 +26,4 @@ RUN npm install sfdx-cli@7.198.6 --global \
     && npm install sfdx-git-delta@latest --global \
     && sfdx plugins
 
-WORKDIR /app
-
 RUN npm install xml2js --verbose --global
