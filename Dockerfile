@@ -29,5 +29,5 @@ RUN npm install sfdx-cli@7.198.6 --global \
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-COPY scripts/SearchUnusedCustomLabels.js /app/scripts
+COPY script/SearchUnusedCustomLabels.js /app/scripts
 RUN npm install
