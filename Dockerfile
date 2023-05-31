@@ -27,4 +27,4 @@ RUN npm install sfdx-cli@7.198.6 --global \
     && sfdx plugins
 
 
-RUN npm install xml2js glob axios
+RUN npm install --verbose xml2js glob axios
