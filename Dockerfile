@@ -26,4 +26,11 @@ RUN npm install sfdx-cli@7.198.6 --global \
     && npm install sfdx-git-delta@latest --global \
     && sfdx plugins
 
+WORKDIR /app
+COPY package.json package-lock.json ./
+
+COPY . .
+
+CMD ["node", "scripts/RemoveUnusedCustomLabels_V2.js"]
+
 RUN npm install xml2js --verbose --global
