@@ -1,5 +1,5 @@
 # node > 14.6.0 is required for the SFDX-Git-Delta plugin
-FROM node:lts-alpine
+FROM node:alpine
 
 #add usefull tools
 RUN apk add --update --no-cache  \
@@ -27,4 +27,4 @@ RUN npm install sfdx-cli@7.198.6 --global \
     && sfdx plugins
 
 
-RUN npm install --verbose xml2js glob axios
+RUN npm install --verbose xml2js
