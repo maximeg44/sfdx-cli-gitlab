@@ -1,5 +1,5 @@
 # node > 14.6.0 is required for the SFDX-Git-Delta plugin
-FROM node:alpine
+FROM node:16-alpine
 
 #add usefull tools
 RUN apk add --update --no-cache  \
@@ -15,6 +15,9 @@ RUN apk add --update --no-cache  \
       openssh-client \
       perl \
       jq
+
+
+RUN npm install -g npm@8.1.3
 
 # install Salesforce CLI from npm
 # RUN npm install sfdx-cli@latest-rc --global
