@@ -28,6 +28,6 @@ RUN npm install sfdx-cli@7.198.6 --global \
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json RemoveUnusedCustomLabels_V2.js /script/
 
 RUN npm install  
