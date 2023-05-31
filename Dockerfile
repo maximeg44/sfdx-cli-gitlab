@@ -1,10 +1,8 @@
 # node > 14.6.0 is required for the SFDX-Git-Delta plugin
 FROM node:lts-alpine
 
-WORKDIR /app
-
-# add useful tools
-RUN apk add --update --no-cache \
+#add usefull tools
+RUN apk add --update --no-cache  \
       git \
       findutils \
       bash \
@@ -21,9 +19,12 @@ RUN apk add --update --no-cache \
 # install Salesforce CLI from npm
 # RUN npm install sfdx-cli@latest-rc --global
 # install SFDX-Git-Delta plugin - https://github.com/scolladon/sfdx-git-delta
-RUN npm install sfdx-cli@7.201.6 --global \
+# install SFDX-Hardis - https://github.com/hardisgroupcom/sfdx-hardis
+RUN npm install sfdx-cli@7.198.6 --global \
     && sfdx --version \
     && echo y | sfdx plugins:install sfdx-git-delta \
-    && sfdx plugins
-
-RUN npm install xml2js glob axios sfdx-git-delta@latest --global
+    && npm install sfdx-git-delta@latest --global \
+    && sfdx plugins \
+    && npm install xml2js \
+    && npm install glob \
+    && npm install axios
