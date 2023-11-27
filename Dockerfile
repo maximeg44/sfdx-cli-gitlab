@@ -20,7 +20,7 @@ RUN apk add --update --no-cache  \
 # RUN npm install sfdx-cli@latest-rc --global
 # install SFDX-Git-Delta plugin - https://github.com/scolladon/sfdx-git-delta
 # install SFDX-Hardis - https://github.com/hardisgroupcom/sfdx-hardis
-RUN npm install sfdx-cli@2.17.14 --global \
+RUN npm install @salesforce/cli --global \
     && sfdx --version \
     && echo y | sfdx plugins:install sfdx-git-delta \
     && npm install sfdx-git-delta@latest --global \
