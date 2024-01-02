@@ -24,4 +24,5 @@ RUN npm install @salesforce/cli --global \
     && sfdx --version \
     && echo y | sfdx plugins:install sfdx-git-delta \
     && npm install sfdx-git-delta@latest --global \
-    && sfdx plugins
+    && sfdx plugins \
+    && sfdx plugins:install community
