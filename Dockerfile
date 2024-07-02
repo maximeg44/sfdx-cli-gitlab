@@ -7,7 +7,6 @@ RUN apt-get update && apt-get install -y \
       curl \
       file \
       git \
-      libxcrypt-compat \
       npm \
       unzip \
       wget \
