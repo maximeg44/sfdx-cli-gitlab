@@ -12,8 +12,7 @@ RUN apk add --update --no-cache  \
       openjdk8-jre \
       openssh-client \
       perl \
-      jq \
-      sudo
+      jq 
 
 # install Salesforce CLI from npm
 # RUN npm install sfdx-cli@latest-rc --global
