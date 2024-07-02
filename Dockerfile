@@ -54,12 +54,17 @@ RUN npm install @salesforce/cli@latest --global \
     && sf plugins install @salesforce/sfdx-scanner \
     && sfdx plugins
 
+# Install Homebrew
+RUN mkdir /home/linuxbrew \
+    && curl -fsSL -o install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh \
+    && chmod +x install.sh \
+    && /bin/bash install.sh
+
+# Add Homebrew to PATH
+ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
+
 # Install glab
-RUN latest_release=$(curl -s https://api.github.com/repos/profclems/glab/releases/latest | jq -r .tag_name) \
-    && wget https://github.com/profclems/glab/releases/download/${latest_release}/glab_${latest_release}_Linux_x86_64.tar.gz \
-    && tar -xvzf glab_${latest_release}_Linux_x86_64.tar.gz \
-    && mv glab /usr/local/bin/ \
-    && rm -rf glab_${latest_release}_Linux_x86_64.tar.gz
+RUN brew install glab
 
 # Verify installation
 RUN glab --version
