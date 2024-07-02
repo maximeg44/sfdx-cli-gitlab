@@ -16,6 +16,24 @@ RUN apt-get update && apt-get install -y \
       jq \
       && rm -rf /var/lib/apt/lists/*
 
+# Create a non-root user
+RUN useradd -m brewuser
+
+# Switch to the non-root user
+USER brewuser
+WORKDIR /home/brewuser
+
+# Install Homebrew
+RUN curl -fsSL -o install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh \
+    && chmod +x install.sh \
+    && /bin/bash install.sh
+
+# Add Homebrew to PATH for brewuser
+ENV PATH="/home/brewuser/.linuxbrew/bin:/home/brewuser/.linuxbrew/sbin:${PATH}"
+
+# Switch back to root to install Salesforce CLI and plugins
+USER root
+
 # Install Salesforce CLI and plugins
 RUN npm install @salesforce/cli@latest --global \
     && sfdx --version \
@@ -25,17 +43,14 @@ RUN npm install @salesforce/cli@latest --global \
     && sf plugins install @salesforce/sfdx-scanner \
     && sfdx plugins
 
-# Install Homebrew
-RUN mkdir /home/linuxbrew \
-    && curl -fsSL -o install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh \
-    && chmod +x install.sh \
-    && /bin/bash install.sh
-
-# Add Homebrew to PATH
-ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
+# Switch back to brewuser to install glab
+USER brewuser
 
 # Install glab
 RUN brew install glab
 
 # Verify installation
 RUN glab --version
+
+# Switch back to root for final setup
+USER root
