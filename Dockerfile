@@ -27,10 +27,11 @@ RUN npm install @salesforce/cli@latest --global \
     && sfdx plugins
 
 # Install glab
-RUN wget https://github.com/profclems/glab/releases/latest/download/glab_Linux_x86_64.tar.gz \
-    && tar -xvzf glab_Linux_x86_64.tar.gz \
+RUN latest_release=$(curl -s https://api.github.com/repos/profclems/glab/releases/latest | grep "tag_name" | awk '{print substr($2, 2, length($2)-3)}') \
+    && wget https://github.com/profclems/glab/releases/download/${latest_release}/glab_${latest_release}_Linux_x86_64.tar.gz \
+    && tar -xvzf glab_${latest_release}_Linux_x86_64.tar.gz \
     && mv bin/glab /usr/local/bin/ \
-    && rm -rf glab_Linux_x86_64.tar.gz bin
+    && rm -rf glab_${latest_release}_Linux_x86_64.tar.gz bin
 
 # Verify installation
 RUN glab --version
