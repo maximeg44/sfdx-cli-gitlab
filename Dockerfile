@@ -27,7 +27,10 @@ RUN npm install @salesforce/cli@latest --global \
     && sfdx plugins
 
 # Install glab
-RUN curl -s https://raw.githubusercontent.com/profclems/glab/trunk/scripts/install.sh | bash
+RUN wget https://github.com/profclems/glab/releases/latest/download/glab_Linux_x86_64.tar.gz \
+    && tar -xvzf glab_Linux_x86_64.tar.gz \
+    && mv bin/glab /usr/local/bin/ \
+    && rm -rf glab_Linux_x86_64.tar.gz bin
 
 # Verify installation
 RUN glab --version
