@@ -25,3 +25,9 @@ RUN npm install @salesforce/cli@latest --global \
     && sfdx plugins:install community \
     && sf plugins install @salesforce/sfdx-scanner \
     && sfdx plugins
+
+# Install glab
+RUN curl -s https://raw.githubusercontent.com/profclems/glab/trunk/scripts/install.sh | bash
+
+# Verify installation
+RUN glab --version
