@@ -26,10 +26,10 @@ WORKDIR /home/brewuser
 # Create a directory for Homebrew
 RUN mkdir /home/brewuser/homebrew
 
-# Install Homebrew
+# Install Homebrew in non-interactive mode
 RUN curl -fsSL -o install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh \
     && chmod +x install.sh \
-    && /bin/bash install.sh --prefix=/home/brewuser/homebrew
+    && NONINTERACTIVE=1 CI=1 /bin/bash install.sh --prefix=/home/brewuser/homebrew
 
 # Add Homebrew to PATH for brewuser
 ENV PATH="/home/brewuser/homebrew/bin:/home/brewuser/homebrew/sbin:${PATH}"
