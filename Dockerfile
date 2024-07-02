@@ -1,43 +1,23 @@
-# Use Ubuntu as the base image
-FROM ubuntu:latest
+# node > 14.6.0 is required for the SFDX-Git-Delta plugin
+FROM node:alpine
 
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-      build-essential \
-      curl \
-      file \
+#add usefull tools
+RUN apk add --update --no-cache  \
       git \
-      npm \
+      findutils \
+      bash \
       unzip \
+      curl \
       wget \
-      openjdk-8-jre \
+      openjdk8-jre \
       openssh-client \
       perl \
-      jq \
-      && rm -rf /var/lib/apt/lists/*
+      jq 
 
-# Create a non-root user
-RUN useradd -m brewuser
-
-# Switch to the non-root user
-USER brewuser
-WORKDIR /home/brewuser
-
-# Create a directory for Homebrew
-RUN mkdir /home/brewuser/homebrew
-
-# Install Homebrew in non-interactive mode
-RUN curl -fsSL -o install.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh \
-    && chmod +x install.sh \
-    && NONINTERACTIVE=1 CI=1 /bin/bash install.sh --prefix=/home/brewuser/homebrew
-
-# Add Homebrew to PATH for brewuser
-ENV PATH="/home/brewuser/homebrew/bin:/home/brewuser/homebrew/sbin:${PATH}"
-
-# Switch back to root to install Salesforce CLI and plugins
-USER root
-
-# Install Salesforce CLI and plugins
+# install Salesforce CLI from npm
+# RUN npm install sfdx-cli@latest-rc --global
+# install SFDX-Git-Delta plugin - https://github.com/scolladon/sfdx-git-delta
+# install SFDX-Hardis - https://github.com/hardisgroupcom/sfdx-hardis
 RUN npm install @salesforce/cli@latest --global \
     && sfdx --version \
     && echo y | sfdx plugins:install sfdx-git-delta \
@@ -45,15 +25,3 @@ RUN npm install @salesforce/cli@latest --global \
     && sfdx plugins:install community \
     && sf plugins install @salesforce/sfdx-scanner \
     && sfdx plugins
-
-# Switch back to brewuser to install glab
-USER brewuser
-
-# Install glab
-RUN brew install glab
-
-# Verify installation
-RUN glab --version
-
-# Switch back to root for final setup
-USER root
