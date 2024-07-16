@@ -1,5 +1,5 @@
 # node > 14.6.0 is required for the SFDX-Git-Delta plugin
-FROM node:22.2.0-alpine
+FROM node:18-alpine
 
 #add usefull tools
 RUN apk add --update --no-cache  \
@@ -24,4 +24,5 @@ RUN npm install @salesforce/cli@latest --global \
     && npm install sfdx-git-delta@latest --global \
     && sfdx plugins:install community \
     && sf plugins install @salesforce/sfdx-scanner \
-    && sfdx plugins
+    && sfdx plugins \
+    && sfdx plugins:install signups
