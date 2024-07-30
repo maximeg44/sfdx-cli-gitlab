@@ -1,5 +1,5 @@
 # node > 14.6.0 is required for the SFDX-Git-Delta plugin
-FROM node:18-alpine
+FROM node:alpine
 
 #add usefull tools
 RUN apk add --update --no-cache  \
