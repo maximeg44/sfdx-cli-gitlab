@@ -23,4 +23,4 @@ RUN npm install -g @salesforce/cli
 RUN npm install -g sfdx-git-delta@latest
 RUN npm install -g @salesforce/plugin-community
 RUN sf plugins 
-RUN sf plugins install sfdx-git-delta
+RUN echo y | sf plugins install sfdx-git-delta
