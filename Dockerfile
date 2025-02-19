@@ -2,6 +2,8 @@ FROM node:18
 
 # Mettre à jour la liste des paquets
 RUN apt-get update
+
+# Installer les paquets nécessaires un par un
 RUN apt-get install -y git
 RUN apt-get install -y findutils
 RUN apt-get install -y bash
