@@ -1,17 +1,20 @@
 FROM node:18
 
-RUN apt-get update && apt-get install -y \
-    git \
-    findutils \
-    bash \
-    unzip \
-    curl \
-    wget \
-    openjdk-11-jre \
-    openssh-client \
-    perl \
-    jq \
-  && rm -rf /var/lib/apt/lists/*
+# Mettre à jour la liste des paquets
+RUN apt-get update
+RUN apt-get install -y git
+RUN apt-get install -y findutils
+RUN apt-get install -y bash
+RUN apt-get install -y unzip
+RUN apt-get install -y curl
+RUN apt-get install -y wget
+RUN apt-get install -y openjdk-17-jre-headless
+RUN apt-get install -y openssh-client
+RUN apt-get install -y perl
+RUN apt-get install -y jq
+
+# Nettoyer le cache d'apt
+RUN rm -rf /var/lib/apt/lists/*
 
 # Installation du Salesforce CLI et des plugins requis
 RUN npm install -g @salesforce/cli
