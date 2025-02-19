@@ -1,23 +1,21 @@
-# node > 14.6.0 is required for the SFDX-Git-Delta plugin
-FROM node:alpine
+#Node v16.20.0 or above is required.
+FROM node:18
 
-#add usefull tools
-RUN apk add --update --no-cache  \
-      git \
-      findutils \
-      bash \
-      unzip \
-      curl \
-      wget \
-      openjdk8-jre \
-      openssh-client \
-      perl \
-      jq 
+# Mise à jour des paquets et installation des outils nécessaires
+RUN apt-get update && apt-get install -y \
+    git \
+    findutils \
+    bash \
+    unzip \
+    curl \
+    wget \
+    openjdk-8-jre \
+    openssh-client \
+    perl \
+    jq \
+  && rm -rf /var/lib/apt/lists/*
 
-# install Salesforce CLI from npm
-# RUN npm install sfdx-cli@latest-rc --global
-# install SFDX-Git-Delta plugin - https://github.com/scolladon/sfdx-git-delta
-# install SFDX-Hardis - https://github.com/hardisgroupcom/sfdx-hardis
-RUN npm install @salesforce/cli --global 
-RUN npm install sfdx-git-delta@latest --global 
-RUN npm install @salesforce/plugin-community --global 
+# Installation du Salesforce CLI et des plugins requis
+RUN npm install -g @salesforce/cli
+RUN npm install -g sfdx-git-delta@latest
+RUN npm install -g @salesforce/plugin-community
