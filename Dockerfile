@@ -21,5 +21,4 @@ RUN apk add --update --no-cache  \
 RUN npm install @salesforce/cli --global \
     && sf --version \
     && echo y | sf plugins install sfdx-git-delta \
-    && npm install sfdx-git-delta --global \
     && sf plugins install community 
