@@ -1,7 +1,5 @@
-#Node v16.20.0 or above is required.
 FROM node:18
 
-# Mise à jour des paquets et installation des outils nécessaires
 RUN apt-get update && apt-get install -y \
     git \
     findutils \
@@ -9,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     curl \
     wget \
-    openjdk-8-jre \
+    openjdk-11-jre \
     openssh-client \
     perl \
     jq \
