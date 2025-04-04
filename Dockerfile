@@ -3,7 +3,7 @@ FROM node:18
 # Mettre à jour la liste des paquets
 RUN apt-get update
 
-# Installer les paquets nécessaires un par un
+# Installer les paquets nécessaires
 RUN apt-get install -y git
 RUN apt-get install -y findutils
 RUN apt-get install -y bash
@@ -19,9 +19,6 @@ RUN apt-get install -y jq
 RUN rm -rf /var/lib/apt/lists/*
 
 # Installation du Salesforce CLI et des plugins requis
-RUN npm install -g @salesforce/cli
-# RUN npm install -g sfdx-git-delta@latest
-RUN npm install -g @salesforce/plugin-community
+RUN npm install -g @salesforce/cli \
+      && npm install -g @salesforce/plugin-community
 RUN echo y | sf plugins install sfdx-git-delta
-RUN sf plugins 
-RUN sf --version
