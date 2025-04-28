@@ -18,4 +18,4 @@ RUN apt-get update && apt-get install -y \
 RUN npm install -g @salesforce/cli \
  && npm install -g @salesforce/plugin-community \
  && echo y | sf plugins install sfdx-git-delta \
- && echo y | sfdx plugins:install lightning-flow-scanner
+ && echo y | sf plugins install lightning-flow-scanner
