@@ -1,11 +1,5 @@
 FROM node:20-slim
 
-# Set environment variable to avoid some interactive prompts
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Set working directory
-WORKDIR /workspace
-
 # Add GitLab CI specific configuration
 ENV CI=true
 ENV FORCE_COLOR=true
