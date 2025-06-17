@@ -23,5 +23,5 @@ jobs:
               with:
                   push: true
                   tags: |
-                    maximehardis/sfdx-cli-gitlab:2.1.4
+                    maximehardis/sfdx-cli-gitlab:2.1.5
                     maximehardis/sfdx-cli-gitlab:latest
