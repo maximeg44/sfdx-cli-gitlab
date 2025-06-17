@@ -1,4 +1,4 @@
-FROM node:23-slim
+FROM node:20-slim
 
 # Set environment variable to avoid some interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
