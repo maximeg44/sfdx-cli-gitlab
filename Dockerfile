@@ -2,6 +2,8 @@ FROM node:23-slim
 
 # Set environment variable to avoid some interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
+ENV CI=true
+ENV FORCE_COLOR=true
 
 # Set working directory
 WORKDIR /workspace
