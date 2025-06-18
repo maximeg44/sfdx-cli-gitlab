@@ -17,7 +17,7 @@ RUN apt-get update \
         unzip \
         curl \
         wget \
-        openjdk-21-jre-headless \
+        openjdk-17-jre-headless \
         openssh-client \
         perl \
         jq \
