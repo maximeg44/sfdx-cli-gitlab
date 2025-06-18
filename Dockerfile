@@ -5,9 +5,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV CI=true
 ENV FORCE_COLOR=true
 
-# Set working directory
-WORKDIR /workspace
-
 # Install system dependencies efficiently
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -30,6 +27,3 @@ RUN npm install -g @salesforce/cli@latest \
     && echo y | sf plugins install lightning-flow-scanner \
     && echo y | sf plugins install community \
     && npm cache clean --force
-
-# Default command (optional)
-CMD ["bash"]
