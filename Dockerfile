@@ -1,4 +1,4 @@
-FROM node:22-slim
+FROM node:23-slim
 
 # Installation des dépendances système nécessaires
 RUN apt-get update && apt-get install -y \
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 
 # Installation du Salesforce CLI et des plugins requis
-RUN npm install -g @salesforce/cli@2.85.7 \
+RUN npm install -g @salesforce/cli \
  && npm install -g @salesforce/plugin-community \
  && echo y | sf plugins install sfdx-git-delta \
  && echo y | sf plugins install lightning-flow-scanner
