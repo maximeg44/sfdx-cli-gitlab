@@ -1,5 +1,4 @@
 FROM node:23-slim
-ENV FORCE_COLOR=true
 # Installation des dépendances système nécessaires
 RUN apt-get update && apt-get install -y \
     git \
