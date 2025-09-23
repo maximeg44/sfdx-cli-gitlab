@@ -17,4 +17,5 @@ RUN apt-get update && apt-get install -y \
 RUN npm install -g @salesforce/cli \
  && npm install -g @salesforce/plugin-community \
  && echo y | sf plugins install sfdx-git-delta \
- && echo y | sf plugins install @corekraft/flow-linter
+ && echo y | sf plugins install @corekraft/flow-linter \
+ && echo y | sf plugins install community
