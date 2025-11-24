@@ -13,6 +13,9 @@ RUN apt-get update && apt-get install -y \
     jq \
  && rm -rf /var/lib/apt/lists/*
 
+# Mise à jour de npm vers la dernière version
+RUN npm install -g npm@latest
+
 # Installation du Salesforce CLI et des plugins requis
 RUN npm install -g @salesforce/cli \
  && npm install -g @salesforce/plugin-community \
